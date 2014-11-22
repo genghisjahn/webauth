@@ -1,9 +1,13 @@
 package main
 
-func AuthenticateUserNamePassword(userName string, password string) (AuthResponse, error) {
-	authResp := AuthResponse{}
-	authResp.GUID = ""
-	authResp.LoggedIn = false
-	authResp.UserName = ""
-	return authResp, nil
+type Authenticator interface {
+	AuthenticateUserNamePassword(userName string, password string) (AuthResponse, error)
+}
+
+type Authenticate struct {
+}
+
+func ProcessAuthentication(userName string, password string) (AuthResponse, error) {
+	auth := Authenticate{}
+	return auth.AuthenticateUserNamePassword(userName, password)
 }
