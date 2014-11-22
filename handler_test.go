@@ -24,7 +24,6 @@ func TestValidLogin(t *testing.T) {
 		log.Fatal(err)
 	}
 	w := httptest.NewRecorder()
-	log.Println("about to call auth")
 	authHandler(w, r)
 	if w.Code != 200 {
 		t.Errorf(EXPECTEDRESULT, 200, w.Code)
