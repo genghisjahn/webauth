@@ -16,10 +16,9 @@ const EXPECTEDRESULT = "\nEXPECTED:%v\nRESULT:%v\n"
 func TestValidLogin(t *testing.T) {
 	r, err := http.NewRequest("POST", fmt.Sprintf("%v/auth", TESTURL), nil)
 	v := url.Values{}
-	v.Add("un", "test_user")
+	v.Add("un", "test@test.com")
 	v.Add("pw", "password")
 	r.Form = v
-	//r.Body = ioutil.NopCloser(strings.NewReader(fmt.Sprintf("{\"language\":\"%v\"}", invalidLang)))
 	if err != nil {
 		log.Fatal(err)
 	}

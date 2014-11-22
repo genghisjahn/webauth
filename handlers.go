@@ -3,8 +3,13 @@ package main
 import "net/http"
 
 func authHandler(w http.ResponseWriter, r *http.Request) {
-	//http.Error(w, "Not Implemented.", http.StatusInternalServerError)
 	userName := r.FormValue("un")
 	password := r.FormValue("pw")
-	ProcessAuthentication(userName, password)
+	authResp, err := ProcessAuthentication(userName, password)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
+	if !authResp.LoggedIn {
+		http.Error(w, "Something went wrong.", http.StatusBadRequest)
+	}
 }

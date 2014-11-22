@@ -11,3 +11,15 @@ func ProcessAuthentication(userName string, password string) (AuthResponse, erro
 	auth := Authenticate{}
 	return auth.AuthenticateUserNamePassword(userName, password)
 }
+
+type InvalidUserNameError struct {
+}
+type InvalidPasswordError struct {
+}
+
+func (u *InvalidUserNameError) Error() string {
+	return "Invalid username."
+}
+func (u *InvalidPasswordError) Error() string {
+	return "Invalid password."
+}
