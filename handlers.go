@@ -13,5 +13,3 @@ func authHandler(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Something went wrong.", http.StatusBadRequest)
 	}
 }
-
-//TEMP STUFF
